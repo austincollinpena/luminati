@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"net/url"
 	"strconv"
+	"time"
 )
 
 // Client represents a luminati.io client that setups internally the proxy
@@ -15,6 +16,7 @@ type Client struct {
 	host      string
 	port      int
 	SessionID string
+	Timeout time.Duration
 }
 
 // NewClient Creates a Client with the luminati.io credentials
@@ -37,7 +39,9 @@ func (c *Client) NewSession() {
 
 // Do executes a reqeuquest using a proxy from luminaati.io network
 func (c *Client) Do(request *http.Request) (resp *http.Response, err error) {
-	client := &http.Client{}
+	client := &http.Client{
+		Timeout: c.Timeout,
+	}
 	c.setProxy(client, request)
 	response, err := client.Do(request)
 	return response, err
