@@ -1,3 +1,7 @@
+# Updated
+
+This project was updated with [this pull request from SeqoeUI](https://github.com/Elph/luminati/pull/3/commits/69aabc2bc347414121934946597fcb7ceaa108e3). I will monitor this for future pull requests if desired.
+
 # luminati
 
 A go library to use luminati.io proxy service. Personal project just to do something meaningful while trying to learn
